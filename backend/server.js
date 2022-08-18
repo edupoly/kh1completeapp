@@ -5,6 +5,7 @@ var session = require('express-session');
 var app = express();
 app.use(cookieParser());
 app.use(session({secret: "Shh, its a secret!"}));
+app.set('view engine', 'pug')
 
 var cors = require('cors')
 var foodItems = require('./food')
