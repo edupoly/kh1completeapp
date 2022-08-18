@@ -1,5 +1,11 @@
 var express = require('express')
+
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
 var app = express();
+app.use(cookieParser());
+app.use(session({secret: "Shh, its a secret!"}));
+
 var cors = require('cors')
 var foodItems = require('./food')
 app.use(cors())
