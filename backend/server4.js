@@ -44,7 +44,7 @@ app.post("/login",function(req,res){
         res.redirect("/")
     }
     else{
-        res.redirect("/login")
+        res.sendFile("/login.html")
     }
 })
 
