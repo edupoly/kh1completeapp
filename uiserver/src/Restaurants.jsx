@@ -1,14 +1,26 @@
 import React from 'react'
 
-function Restaurants() {
+function Restaurants(props) {
     const [restaurants,setrestaurants] = React.useState([])
     React.useEffect(()=>{
         //send request to backend server for food items
-        fetch('http://localhost:5500/foodItems')
+        fetch('http://localhost:5500/foodItems',{
+          headers: {
+            'Authorization': 'Bearer ' + window.localStorage.getItem('token'),
+            'Content-Type': 'application/json'
+          }
+      })
         .then(res=>res.json())
         .then(data=>{
-          console.log(data)
-          setrestaurants(data)
+          
+          if(data.err){
+            window.localStorage.clear();
+            props.setIsLoggedIn(false);
+          }
+          else{
+            console.log(data)
+            setrestaurants(data)
+          }
         })
     },[])
   return (
