@@ -6,10 +6,12 @@ function Login(props) {
         password:''
     })
     function login(){
-        fetch('http://localhost:5500/login', {
+        fetch('https://foodapis.praveenclasses.repl.co/login', {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
+            mode: 'no-cors',
             headers: {
-              'Content-Type': 'application/json'
+              'Content-Type': 'application/json',
+              'Access-Control-Allow-Origin': 'http://localhost:3000'
             },
             body: JSON.stringify(user) // body data type must match "Content-Type" header
         })

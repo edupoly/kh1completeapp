@@ -4,7 +4,8 @@ function Restaurants(props) {
     const [restaurants,setrestaurants] = React.useState([])
     React.useEffect(()=>{
         //send request to backend server for food items
-        fetch('http://localhost:5500/foodItems',{
+        fetch('https://foodapis.praveenclasses.repl.co/foodItems',{
+          mode: 'cors',
           headers: {
             'Authorization': 'Bearer ' + window.localStorage.getItem('token'),
             'Content-Type': 'application/json'
